@@ -1,0 +1,27 @@
+# Exclude Python cache and compiled files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.swp
+*.swo
+*.DS_Store
+
+# Exclude virtual environments and dependency caches
+venv/
+.env
+*.log
+.mypy_cache/
+pytest_cache/
+.coverage
+htmlcov/
+
+# Exclude version control system files
+.git/
+.gitignore
+.gitattributes
+
+# Exclude IDE and editor configurations
+.vscode/
+.idea/
+*.iml
