@@ -1,0 +1,9 @@
+[tool.ruff]
+target-version = "py311"
+line-length = 120
+exclude = ["alembic/**/**.py",]
+lint.select = ["ALL"]
+lint.ignore = [
+    "E501", "D104", "D213", "D203", "D100", "D107", "ANN001", "ANN002", "ANN003", "D106", "N818", "ARG001", "FAST001"
+]
+lint.per-file-ignores = {"__init__.py" = ["F401"]}
