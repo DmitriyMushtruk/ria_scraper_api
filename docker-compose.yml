@@ -1,0 +1,60 @@
+services:
+  db:
+    container_name: ria_scraper_db
+    image: postgres:15
+    env_file:
+      - .env
+    restart: always
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+      PGUSER: ${POSTGRES_USER}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    networks:
+      - python-net
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}" ]
+      interval: 10s
+      retries: 5
+      start_period: 15s
+      timeout: 10s
+
+  app:
+    container_name: ria_scraper_backend
+    build: .
+    env_file:
+      - .env
+    restart: always
+    volumes:
+      - ./app:/app/app
+      - ./dumps:/app/dumps
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "8000:8000"
+    networks:
+      - python-net
+
+  adminer:
+    image: adminer
+    restart: always
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "8080:8080"
+    networks:
+      - python-net
+
+volumes:
+  postgres_data:
+
+networks:
+  python-net:
+    name: python-net
+    external: true
