@@ -130,3 +130,5 @@ The RiaScraper class implements an asynchronous scraper designed to collect car 
 * Robust error handling: Logs errors during page fetch, allowing scraping to continue uninterrupted.
 
 * Context manager support: Properly opens and closes resources ensuring clean startup and shutdown.
+
+<img src="./diagram.svg" alt="Diagram" width="800" />
