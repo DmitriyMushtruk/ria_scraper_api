@@ -42,7 +42,9 @@ docker-compose up --build
 <p>4. Access the API</p>
 
 ```
-The FastAPI server will be available at http://localhost:8000. Interactive API docs are at http://localhost:8000/docs.
+The FastAPI server will be available at http://localhost:8000.
+
+Interactive API docs are at http://localhost:8000/api/docs.
 ```
 
 <p>5. Stopping the application</p>
@@ -78,7 +80,6 @@ make down     # Stop and clean up everything
 ```
 
 
-Scraper Overview
 <h2>📝 Scraper Overview</h2>
 The RiaScraper class implements an asynchronous scraper designed to collect car data from the AutoRia website. It uses a classic producer-consumer pattern with load balancing and concurrency control.
 
@@ -131,4 +132,4 @@ The RiaScraper class implements an asynchronous scraper designed to collect car 
 
 * Context manager support: Properly opens and closes resources ensuring clean startup and shutdown.
 
-<img src="./diagram.svg" alt="Diagram" width="800" />
+<img src="./diagram.svg" alt="Diagram" width="600" />
